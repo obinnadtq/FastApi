@@ -6,9 +6,18 @@ class BookingCreate(BaseModel):
     room_number: int
     date: date
 
+class BookingUpdate(BaseModel):
+    customer_name: str
+    room_number: int
+    date: date
+    status: str
+
 class BookingResponse(BaseModel):
     id: int
     customer_name: str
     room_number: int
     date: date
     status: str
+
+class Config:
+    orm_mode = True

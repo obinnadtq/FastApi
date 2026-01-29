@@ -1,10 +1,10 @@
-from dataclasses import dataclass
-from datetime import date
+from sqlalchemy import Column, Integer, String, Date
+from database import Base
 
-@dataclass
-class Booking:
-    id: int
-    customer_name: str
-    room_number: int
-    date: date
-    status: str = "confirmed"
+class Booking(Base):
+    __tablename__ = "bookings"
+    id = Column(Integer, primary_key=True, index=True)
+    customer_name = Column(String, nullable=False)
+    room_number = Column(Integer, nullable=False)
+    date = Column(Date, nullable=False)
+    status = Column(String, default="Confirmed")
